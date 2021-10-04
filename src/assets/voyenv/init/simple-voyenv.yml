@@ -1,0 +1,12 @@
+name: {voyagerName}
+
+voyager_version: {voyagerVersion}
+
+instruments:
+  - name: dxworks/voyager-git-log-instrument
+    asset: git-log.zip
+
+tokens:
+
+runtimes:
+

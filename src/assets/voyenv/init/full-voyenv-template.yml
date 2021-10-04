@@ -1,0 +1,36 @@
+name: {voyagerName}
+
+voyager_version: {voyagerVersion}
+
+instruments:
+  - name: dxworks/voyager-git-log-instrument
+    asset: git-log.zip
+  - name: dxworks/inspector-git
+    asset: iglog.zip
+  - name: dxworks/insider
+    asset: insider-voyager.zip
+  - name: dxworks/dude
+    asset: dude-voyager.zip
+  - name: dxworks/lizard
+  - name: dxworks/metrixplusplus
+  - name: dxworks/honeydew
+    asset: honeydew.zip
+  - name: dxworks/jafax
+    asset: jafax.zip
+  - name: dxworks/maven-miner
+    asset: maven-miner-voyager.zip
+  - name: dxworks/npm-miner
+    asset: npm-miner-voyager.zip
+
+tokens:
+
+runtimes:
+  java:
+    version: 11
+    platform: {platform}
+    arch: x64
+  python:
+    version: 3.9.4
+    platform: {platform}
+    arch: x86_64
+

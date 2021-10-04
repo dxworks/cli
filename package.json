@@ -1,0 +1,45 @@
+{
+  "name": "dxworks-cli",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./dist/app/index.js",
+  "bin": {
+    "dxw": "./dist/app/index.js"
+  },
+  "scripts": {
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts",
+    "create": "npm run build && npm run test",
+    "build": "npm run clean && tsc -p . && npm run copy-files",
+    "local": "npm i -g && voyager-cli",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "lint": "eslint ./src --ext .ts",
+    "lint-fix": "eslint ./src --ext .ts --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mario Rivis",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.10.2",
+    "@types/string-template": "^1.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.13",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@types/figlet": "^1.5.4",
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "commander": "^8.2.0",
+    "figlet": "^1.5.2",
+    "path": "^0.12.7",
+    "string-template": "^1.0.0"
+  }
+}
