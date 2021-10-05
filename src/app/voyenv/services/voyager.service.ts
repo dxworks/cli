@@ -1,8 +1,8 @@
-import {downloadFile} from '../../utils/utils'
+import {downloadFile, getAssetFile} from '../../utils/utils'
 import {Octokit} from 'octokit'
 import {Presets, SingleBar} from 'cli-progress'
 
-import {dxworks, voyager, voyagerAssetName} from '../../utils/constants'
+import {configFile, doctorFile, dxworks, missionFile, voyager, voyagerAssetName} from '../../utils/constants'
 import path from 'path'
 import * as fs from 'fs'
 import {unzip} from '../../utils/compresss-utils'
@@ -38,6 +38,9 @@ export class VoyagerService {
     fs.readdirSync(voyagerDir).forEach(file =>
       fs.cpSync(path.resolve(voyagerDir, file), path.resolve(this.directory, file), {recursive: true}))
     fs.rmSync(voyagerDir, {recursive: true, force: true})
+    fs.cpSync(getAssetFile('voyenv/install/default-config.yml'), path.resolve(this.directory, configFile))
+    fs.cpSync(getAssetFile('voyenv/install/default-doctor.yml'), path.resolve(this.directory, doctorFile))
+    fs.cpSync(getAssetFile('voyenv/install/default-mission.yml'), path.resolve(this.directory, missionFile))
     progressBar.stop()
 
   }
