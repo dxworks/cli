@@ -10,22 +10,28 @@
     "clean": "rimraf dist/",
     "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts",
+    "start:voyenv:install": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
     "create": "npm run build && npm run test",
     "build": "npm run clean && tsc -p . && npm run copy-files",
-    "local": "npm i -g && voyager-cli",
+    "local": "npm i -g && dxworks-cli",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
     "lint": "eslint ./src --ext .ts",
-    "lint-fix": "eslint ./src --ext .ts --fix",
+    "lint:fix": "eslint ./src --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Mario Rivis",
   "license": "MIT",
   "devDependencies": {
+    "@types/cli-progress": "^3.9.2",
     "@types/node": "^16.10.2",
+    "@types/request": "^2.48.7",
     "@types/string-template": "^1.0.2",
+    "@types/unzipper": "^0.10.4",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
+    "@types/figlet": "^1.5.4",
+    "@types/semver": "^7.3.8",
     "copyfiles": "^2.4.1",
     "eslint": "^7.32.0",
     "nodemon": "^2.0.13",
@@ -34,12 +40,17 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@types/figlet": "^1.5.4",
+    "axios": "^0.22.0",
     "chalk": "^4.1.2",
-    "clear": "^0.1.0",
+    "cli-progress": "^3.9.1",
     "commander": "^8.2.0",
     "figlet": "^1.5.2",
+    "octokit": "^1.6.2",
     "path": "^0.12.7",
-    "string-template": "^1.0.0"
+    "request": "^2.88.2",
+    "semver": "^7.3.5",
+    "string-template": "^1.0.0",
+    "unzipper": "^0.10.11",
+    "yaml": "^1.10.2"
   }
 }

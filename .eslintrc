@@ -18,7 +18,8 @@
             "functions": "never"
         }],
         "quotes": ["error", "single", { "avoidEscape": true }],
-        "semi": ["warn", "never"]
+        "semi": ["warn", "never"],
+        "@typescript-eslint/no-explicit-any": "off"
     }
 
 }
