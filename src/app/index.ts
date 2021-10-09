@@ -1,20 +1,16 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk'
-import {version} from './utils/utils'
 import './extensions/extensions'
 import {Command} from 'commander'
 import {voyenvCommand} from './voyenv/voyenv'
+import {version} from './utils/utils'
+import {devCommand} from './dev/dev'
 
-// const path = require('path');
-
-
-console.log(chalk.magenta(`Starting dxworks-cli ${version}`))
 
 const cli = new Command()
 cli
-  .version('0.1.0')
   .description('DxWorks CLI - a cli utility to help with using and developing Dxworks projects.')
+  .version(version, '-v, -version, --version, -V')
   .addCommand(voyenvCommand)
-  // .addCommand( dev )
+  .addCommand(devCommand)
   .parse(process.argv)

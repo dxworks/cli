@@ -6,8 +6,9 @@ import {Voyenv} from '../model/voyenv'
 import {VoyagerService} from '../services/voyager.service'
 import {InstrumentService} from '../services/instrument.service'
 import {Octokit} from 'octokit'
-import {version} from '../../utils/utils'
+import {defaultOctokit, version} from '../../utils/utils'
 import path from 'path'
+import {log} from '../../utils/logging'
 
 
 export const voyenvInstall = new Command()
@@ -18,13 +19,13 @@ export const voyenvInstall = new Command()
 
 
 export async function install(file: string): Promise<void> {
-  console.log(`Installing Voyager from ${file}`)
+  log.info(`Installing Voyager from ${file}`)
 
   const voyenvString = fs.readFileSync(file, 'utf-8')
 
   const voyenv = YAML.parse(voyenvString) as Voyenv
 
-  console.log(`Setting up release ${voyenv.name}`)
+  log.info(`Setting up release ${voyenv.name}`)
 
 
   const voyenvDir = path.resolve(path.dirname(file))
@@ -33,13 +34,13 @@ export async function install(file: string): Promise<void> {
 
   const octokit = getOctokit(voyenv)
 
-  console.log('Downloading voyager')
+  log.info('Downloading voyager')
   await new VoyagerService(octokit, rootDir).downloadAndInstallVoyager(voyenv.voyager_version)
-  console.log('Downloading Instruments')
+  log.info('Downloading Instruments')
   await new InstrumentService(octokit, rootDir).downloadInstruments(voyenv.instruments)
 
   if (voyenv.name !== '.') {
-    console.log('Copying Voyenv')
+    log.info('Copying Voyenv')
     voyenv.name = '.'
     fs.writeFileSync(path.resolve(rootDir, defaultVoyenvFileName), YAML.stringify(voyenv), {encoding: 'utf-8'})
   }
@@ -54,9 +55,7 @@ function getOctokit(voyenv: Voyenv) {
       auth: voyenv.token,
       userAgent: `dxworks-cli ${version}`,
     })
-  else return new Octokit({
-    userAgent: `dxworks-cli ${version}`,
-  })
+  else return defaultOctokit
 }
 
 

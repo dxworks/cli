@@ -1,0 +1,32 @@
+slug: project
+name: Project Name
+
+description: Project is amazing
+
+license: Apache-2.0
+
+code:
+  - https://github.com/dxworks/project
+
+docs:
+
+homepage:
+
+technologies:
+  - Java
+
+voyager:
+  versions:
+    - version: 1.0.0
+      name: dxworks/honeydew
+      tag: v1.0.0-voyager
+      asset: dude-voyager.zip
+    - version: 1.1.1
+      name: dxworks/honeydew
+      tag: v1.1.1-voyage
+      asset: dude-voyager.zip
+    - version: 1.1.2
+      name: dxworks/honeydew
+      tag: v1.1.2-voyager
+      asset: dude-voyager.zi
+

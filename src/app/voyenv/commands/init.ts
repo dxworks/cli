@@ -5,6 +5,7 @@ import {Command, Option} from 'commander'
 import {defaultVoyenvFileName, OS} from '../../utils/constants'
 import {getAssetFile} from '../../utils/utils'
 import {osType} from '../../utils/os-utils'
+import {log} from '../../utils/logging'
 
 type VoyenvInitOptions = {
   createDir: boolean,
@@ -38,11 +39,11 @@ function chooseAssetFile(options: VoyenvInitOptions) {
 }
 
 function init(folder: string, options: VoyenvInitOptions) {
-  console.log(`Creating voyenv.yml file in ${folder}`)
+  log.info(`Creating voyenv.yml file in ${folder}`)
   if (!fs.existsSync(folder)) {
     if (options.createDir) fs.mkdirSync(folder, {recursive: true})
     else {
-      console.error(`Error: Voyenv could not initialize the folder path ${path.resolve(folder)} does not exist. If you want Voyenv to create the directory use the -c (--create-dir) flag`)
+      log.error(`Error: Voyenv could not initialize the folder path ${path.resolve(folder)} does not exist. If you want Voyenv to create the directory use the -c (--create-dir) flag`)
       process.exit(1)
     }
   }

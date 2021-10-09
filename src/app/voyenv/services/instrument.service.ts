@@ -1,6 +1,6 @@
 import {InstrumentConfig} from '../model/voyenv'
 import path from 'path'
-import {downloadFile, humanFileSize, isNotNullNorUndefined} from '../../utils/utils'
+import {downloadFile, extractOwnerAndRepo, humanFileSize, isNotNullNorUndefined} from '../../utils/utils'
 import semver, {rcompare, SemVer} from 'semver'
 import {Octokit} from 'octokit'
 import {MultiBar, Options, Params, Format, Presets, GenericFormatter} from 'cli-progress'
@@ -59,7 +59,7 @@ export class InstrumentService {
 
 
   private async getLatestInstrumentTag(instrument: InstrumentConfig): Promise<TagDetails | null> {
-    const [owner, repo] = InstrumentService.extractOwnerAndRepo(instrument.name)
+    const [owner, repo] = extractOwnerAndRepo(instrument.name)
     const {data} = await this.octokit.rest.repos.listReleases({
       owner,
       repo,
@@ -85,7 +85,7 @@ export class InstrumentService {
     if (instrument.asset)
       return releases.find(it => it.tag_name === tag)?.assets.find((it: any) => it.name === instrument.asset)?.browser_download_url
     else {
-      const [owner, repo] = InstrumentService.extractOwnerAndRepo(instrument.name)
+      const [owner, repo] = extractOwnerAndRepo(instrument.name)
 
       return (await this.octokit.rest.repos.downloadZipballArchive({
         owner,
@@ -96,15 +96,11 @@ export class InstrumentService {
 
   }
 
-  private static extractOwnerAndRepo(name: string): string[] {
-    return name.split('/')
-  }
-
   private async getTag(instrumentConfig: InstrumentConfig): Promise<TagDetails | null> {
     if (instrumentConfig.tag === undefined) {
       return await this.getLatestInstrumentTag(instrumentConfig)
     } else {
-      const [owner, repo] = InstrumentService.extractOwnerAndRepo(instrumentConfig.name)
+      const [owner, repo] = extractOwnerAndRepo(instrumentConfig.name)
       const release = (await this.octokit.rest.repos.getReleaseByTag({
         owner,
         repo,
@@ -121,11 +117,6 @@ export class InstrumentService {
   public createFormatter(instruments: InstrumentConfig[]): GenericFormatter {
     const maxNameLen = instruments.map(it => it.name.length).max()
     return function (options: Options, params: Params, payload: { name: string, state: string }) {
-
-      // bar grows dynamically by current progress - no whitespaces are added
-      // const bar = options.barCompleteString.substr(0, Math.round(params.progress * options.barsize));
-      // console.log(options)
-
       if (payload.state === 'Done') {
         return `${payload.name.padEnd(maxNameLen)}: ${chalk.green(payload.state.padEnd(15))} [${options.formatBar?.call(null, params.progress, options)}] ${(Math.floor(params.progress*100) + '').padStart(3)}% | ${humanFileSize(params.value)} / ${humanFileSize(params.total)}`
       } else {

@@ -1,10 +1,12 @@
-import {platform} from 'os'
+import {platform, homedir} from 'os'
 import {OS} from './constants'
 
 export const osType = getOsType()
 export const isWindows = osType === OS.WINDOWS
 export const commandInterpreterName = getCommandInterpreter()
 export const interpreterArg = getInterpreterArg()
+
+export const userHomeDir = homedir()
 
 function getOsType() {
   switch (platform()) {
