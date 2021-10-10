@@ -1,0 +1,31 @@
+{
+  "name": "@org.dxworks/cli-common",
+  "version": "0.1.0",
+  "description": "Common utils for dxworks-cli",
+  "author": "Mario Rivis <mario.rivis@gmail.com>",
+  "homepage": "https://github.com/dxworks/cli#readme",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "test": "__tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxworks/cli.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist/ *.tsbuildinfo",
+    "copy-files": "copyfiles -a -u 1 assets/**/*.* dist",
+    "create": "npm run build && npm run test",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix",
+    "test": "jest --passWithNoTests",
+    "test:dev": "jest --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/dxworks/cli/issues"
+  }
+}

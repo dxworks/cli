@@ -1,0 +1,47 @@
+{
+  "name": "@org.dxworks/voyenv",
+  "version": "0.1.0",
+  "description": "A cli utility to create voyager releases",
+  "keywords": [
+    "cli",
+    "voyager"
+  ],
+  "author": "Mario Rivis <mario.rivis@gmail.com>",
+  "homepage": "https://github.com/dxworks/cli#readme",
+  "license": "Apache-2.0",
+  "bin": {
+    "voyenv": "dist/index.js"
+  },
+  "main": "dist/voyenv.js",
+  "typings": "dist/voyenv.d.ts",
+  "files": [
+    "src",
+    "assets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxworks/cli.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist/ *.tsbuildinfo",
+    "copy-files": "copyfiles -a -u 1 assets/**/*.* dist",
+    "start:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
+    "start:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv instrument",
+    "create": "npm run build && npm run test",
+    "build": "npm run clean && tsc -p . && npm run copy-files",
+    "local": "npm run build && npm i --force && npx voyenv --help",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix",
+    "test": "jest --passWithNoTests",
+    "test:dev": "jest --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/dxworks/cli/issues"
+  },
+  "dependencies": {
+    "@org.dxworks/cli-common": "^0.1.0",
+    "@org.dxworks/extensions": "^0.1.0",
+    "commander": "^8.2.0"
+  }
+}
