@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 import {Command} from 'commander'
-import {voyenvCommand} from '@org.dxworks/voyenv'
+import {voyenvCommand} from '@dxworks/voyenv'
 import {_package} from './utils'
-import {devCommand} from '@org.dxworks/dev'
+import {devCommand} from '@dxworks/dev'
+
+
 
 const cli = new Command()
 cli

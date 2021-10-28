@@ -1,5 +1,5 @@
 {
-  "name": "@org.dxworks/cli",
+  "name": "@dxworks/cli",
   "version": "0.1.0",
   "description": "A cli utility for developing and using dxworks projects",
   "keywords": [
@@ -18,6 +18,9 @@
     "lib": "lib",
     "test": "__tests__"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dxworks/cli.git"
@@ -43,8 +46,11 @@
     "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
-    "@org.dxworks/voyenv": "^0.1.0",
-    "@org.dxworks/dev": "^0.1.0",
+    "@dxworks/voyenv": "^0.1.0",
+    "@dxworks/dev": "^0.1.0",
     "commander": "^8.2.0"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   }
 }

@@ -53,3 +53,10 @@ describe('sorting tag suggestions for repo', () => {
     expect(sortedTags).toEqual(correctlySortedTags)
   })
 })
+
+describe('should test extension functions work', () => {
+  it('should extract owner/repo', function () {
+    const actual = ManifestValidator.getRepoAndOwnerFromRemoteUrl('https://github.com/dxworks/cli')
+    expect(actual).toEqual('dxworks/cli')
+  })
+})

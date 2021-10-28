@@ -4,7 +4,7 @@ import * as fs from 'fs'
 import * as git from 'isomorphic-git'
 import * as http from 'isomorphic-git/http/node'
 import {homedir} from 'os'
-import {log} from '@org.dxworks/cli-common'
+import {log} from '@dxworks/cli-common'
 import {dxworksHubGithubUrl} from '../constants'
 
 const dxworksHubDir = path.resolve(homedir(), '.dxw', 'hub')

@@ -3,7 +3,7 @@ import {Presets, SingleBar} from 'cli-progress'
 
 import path from 'path'
 import * as fs from 'fs'
-import {downloadFile, unzip} from '@org.dxworks/cli-common'
+import {downloadFile, unzip} from '@dxworks/cli-common'
 import {configFile, doctorFile, dxworks, missionFile, voyager, voyagerAssetName} from '../constants'
 import {getAssetFile} from '../utils'
 

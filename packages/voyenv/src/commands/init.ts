@@ -2,7 +2,7 @@ import template from 'string-template'
 import * as fs from 'fs'
 import * as path from 'path'
 import {Command, Option} from 'commander'
-import {log, OS, osType} from '@org.dxworks/cli-common'
+import {log, OS, osType} from '@dxworks/cli-common'
 import {defaultVoyenvFileName} from '../constants'
 import {getAssetFile} from '../utils'
 

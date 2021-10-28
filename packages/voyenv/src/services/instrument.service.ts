@@ -5,7 +5,7 @@ import {Octokit} from 'octokit'
 import {MultiBar, Options, Params, Format, Presets, GenericFormatter} from 'cli-progress'
 import fs from 'fs'
 import chalk from 'chalk'
-import {downloadFile, extractOwnerAndRepo, humanFileSize, isNotNullNorUndefined, unzip} from '@org.dxworks/cli-common'
+import {downloadFile, extractOwnerAndRepo, humanFileSize, isNotNullNorUndefined, unzip} from '@dxworks/cli-common'
 
 
 export class InstrumentService {

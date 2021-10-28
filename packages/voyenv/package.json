@@ -1,5 +1,5 @@
 {
-  "name": "@org.dxworks/voyenv",
+  "name": "@dxworks/voyenv",
   "version": "0.1.0",
   "description": "A cli utility to create voyager releases",
   "keywords": [
@@ -28,7 +28,7 @@
     "start:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
     "start:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv instrument",
     "create": "npm run build && npm run test",
-    "build": "npm run clean && tsc -p . && npm run copy-files",
+    "build": "npm run clean && tsc -p tsconfig.build.json && npm run copy-files",
     "local": "npm run build && npm i --force && npx voyenv --help",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
     "lint": "eslint ./src --ext .ts",
@@ -40,8 +40,8 @@
     "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
-    "@org.dxworks/cli-common": "^0.1.0",
-    "@org.dxworks/extensions": "^0.1.0",
+    "@dxworks/cli-common": "^0.1.0",
+    "@dxworks/ktextensions": "^0.1.0",
     "commander": "^8.2.0"
   }
 }

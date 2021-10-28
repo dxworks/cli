@@ -1,4 +1,4 @@
-import '@org.dxworks/extensions'
+import '@dxworks/ktextensions'
 
 import {Command} from 'commander'
 import {voyenvInit} from './commands/init'

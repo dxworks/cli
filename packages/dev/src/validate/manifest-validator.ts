@@ -6,7 +6,8 @@ import didYouMean from 'didyoumean'
 import {coerce, rcompare, valid} from 'semver'
 import slug from 'slug'
 import spdxCorrect from 'spdx-correct'
-import {defaultOctokit, extractOwnerAndRepo, log} from '@org.dxworks/cli-common'
+import {defaultOctokit, extractOwnerAndRepo, log} from '@dxworks/cli-common'
+import '@dxworks/ktextensions/dist/string'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const licenseIds = require('spdx-license-ids/')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -114,7 +115,7 @@ export class ManifestValidator {
     })
   }
 
-  private static getRepoAndOwnerFromRemoteUrl(url: string | undefined): string | undefined {
+  static getRepoAndOwnerFromRemoteUrl(url: string | undefined): string | undefined {
     return url?.removeSuffix('.git')
       .removePrefix('https://github.com/')
       .removePrefix('git@github.com:')

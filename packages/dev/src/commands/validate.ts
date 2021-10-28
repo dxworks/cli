@@ -7,7 +7,7 @@ import {ManifestValidator} from '../validate/manifest-validator'
 import inquirer, {Question} from 'inquirer'
 import {Suggestion} from '../model/validation'
 import {defaultManifestFileName} from '../constants'
-import {log} from '@org.dxworks/cli-common'
+import {log} from '@dxworks/cli-common'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 inquirer.registerPrompt('search-list', require('inquirer-search-list'))
 

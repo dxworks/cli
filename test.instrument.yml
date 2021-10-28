@@ -1,0 +1,71 @@
+id: project
+name: Project Name
+version: 1.0.1 # Semver
+
+actions:
+  verify: # doctor
+    commands:
+      - name: Verify Java Version
+        id: java version
+        command: java -version # short version for linux, mac and windows
+        with:
+          script: |
+            (context?: {exitCode: Int, output: string | string[]}): boolean
+      - name: Verify Java Home
+        id: java home
+        unix: echo $JAVA_HOME
+        windows: echo %JAVA_HOME%
+        with:
+          script: |
+            (context?: {exitCode: Int, output: string | string[]}): boolean
+
+  clean:
+    locations:
+      - source: ${instrument}/results
+        destination: gugu # defaults to instrument ''
+        files:
+          - "*-result.txt"
+      - source: ${userHome}/.${instrumnet}/scriptResults
+        destination: scripts
+    #        depth: optional, not relevant
+
+  run: # default
+    commands:
+      - name: Some java command
+        id:
+        mac: java -jar ...
+        linux: java -jar ...
+        windows: java -jar ...
+    #        parameters:
+    #          param1:
+    #        environment:
+    parameters:
+    environment:
+
+  package: # results
+    with:
+      locations:
+        - source: ${instrument}/results
+          destination: gugu # defaults to instrument ''
+          files:
+            - "*-result.txt"
+        - source: ${userHome}/.${instrument}/scriptResults
+          destination: scripts
+  #        depth: optional, not relevant
+
+  unpack: # new action that happens in dx currently -> unpack, run all commands from instruments, clean unpacked folder
+    commands:
+      - name: Some java command
+        id:
+        mac: java -jar ...
+        linux: java -jar ...
+        windows: java -jar ...
+      #        parameters:
+      #          param1:
+      #        environment:
+    parameters:
+      archive: # provided by Voyager by default
+      results: # provided by Voyager by default
+      instrumentResults: # provided by Voyager by default
+    environment:
+

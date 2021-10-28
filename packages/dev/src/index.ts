@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {log} from '@org.dxworks/cli-common'
+import {log} from '@dxworks/cli-common'
 import {devCommand} from './dev'
 import {_package} from './utils'
 

@@ -6,7 +6,7 @@ import {VoyagerService} from '../services/voyager.service'
 import {InstrumentService} from '../services/instrument.service'
 import {Octokit} from 'octokit'
 import path from 'path'
-import {defaultOctokit, log} from '@org.dxworks/cli-common'
+import {defaultOctokit, log} from '@dxworks/cli-common'
 import {defaultVoyenvFileName} from '../constants'
 import {_package} from '../utils'
 
