@@ -46,11 +46,11 @@
     "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
-    "@dxworks/voyenv": "^0.0.0",
     "@dxworks/dev": "^0.0.0",
+    "@dxworks/voyenv": "^0.0.0",
     "commander": "^8.2.0"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   }
 }
