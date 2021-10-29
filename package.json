@@ -72,5 +72,8 @@
     "winston": "^3.3.3",
     "yaml": "^1.10.2"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "private": true
 }
