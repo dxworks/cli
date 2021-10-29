@@ -42,5 +42,8 @@
   "dependencies": {
     "@dxworks/cli-common": "^0.0.0",
     "commander": "^8.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
