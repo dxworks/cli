@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/cli",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A cli utility for developing and using dxworks projects",
   "keywords": [
     "cli",
@@ -46,8 +46,8 @@
     "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
-    "@dxworks/voyenv": "^0.1.0",
-    "@dxworks/dev": "^0.1.0",
+    "@dxworks/voyenv": "^0.0.0",
+    "@dxworks/dev": "^0.0.0",
     "commander": "^8.2.0"
   },
   "publishConfig": {
