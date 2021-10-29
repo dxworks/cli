@@ -42,8 +42,10 @@
   },
   "dependencies": {
     "@dxworks/cli-common": "^0.0.3",
-    "@dxworks/ktextensions": "^0.1.0",
-    "commander": "^8.2.0"
+    "spdx-correct": "^3.1.1",
+    "spdx-license-ids": "^3.0.10",
+    "isomorphic-git": "^1.10.1",
+    "didyoumean": "^1.2.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

@@ -39,8 +39,7 @@
     "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
-    "@dxworks/cli-common": "^0.0.3",
-    "commander": "^8.2.0"
+    "@dxworks/cli-common": "^0.0.3"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
