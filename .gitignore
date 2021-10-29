@@ -123,3 +123,4 @@ dist
 voyager-test
 voyenv.yml
 /manifest.schema.json
+.DS_Store
