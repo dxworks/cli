@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/voyenv",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A cli utility to create voyager releases",
   "keywords": [
     "cli",
@@ -40,7 +40,7 @@
     "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
-    "@dxworks/cli-common": "^0.0.1",
+    "@dxworks/cli-common": "^0.0.2",
     "commander": "^8.2.0"
   },
   "publishConfig": {
