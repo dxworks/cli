@@ -48,7 +48,7 @@ function init(folder: string, options: VoyenvInitOptions) {
   }
   const voyenvFile = path.join(folder, defaultVoyenvFileName)
 
-  const assetName = `voyenv/init/${chooseAssetFile(options)}`
+  const assetName = `init/${chooseAssetFile(options)}`
   const templateString = fs.readFileSync(getAssetFile(assetName), 'utf-8')
   fs.writeFileSync(voyenvFile, template(templateString, {
     voyagerName: options.name,

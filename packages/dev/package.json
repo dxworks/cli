@@ -16,7 +16,7 @@
   "main": "dist/dev.js",
   "typings": "dist/dev.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "repository": {
     "type": "git",

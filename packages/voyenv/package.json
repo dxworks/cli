@@ -15,8 +15,7 @@
   "main": "dist/voyenv.js",
   "typings": "dist/voyenv.d.ts",
   "files": [
-    "src",
-    "assets"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -24,7 +23,7 @@
   },
   "scripts": {
     "clean": "rimraf dist/ *.tsbuildinfo",
-    "copy-files": "copyfiles -a -u 1 assets/**/*.* dist",
+    "copy-files": "copyfiles -a -u 1 assets/**/*.* dist/assets",
     "start:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
     "start:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv instrument",
     "create": "npm run build && npm run test",
