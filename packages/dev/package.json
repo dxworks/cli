@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@dxworks/cli-common": "^0.0.1",
+    "@dxworks/ktextensions": "^0.1.0",
     "commander": "^8.2.0"
   },
   "publishConfig": {
