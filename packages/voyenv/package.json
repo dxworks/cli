@@ -1,0 +1,54 @@
+{
+  "name": "@dxworks/voyenv",
+  "version": "0.0.7",
+  "description": "A cli utility to create voyager releases",
+  "keywords": [
+    "cli",
+    "voyager"
+  ],
+  "homepage": "https://github.com/dxworks/cli#readme",
+  "bugs": {
+    "url": "https://github.com/dxworks/cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxworks/cli.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Mario Rivis <mario.rivis@gmail.com>",
+  "main": "dist/voyenv.js",
+  "typings": "dist/voyenv.d.ts",
+  "bin": {
+    "voyenv": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc -p tsconfig.build.json && npm run copy-files",
+    "clean": "rimraf dist/ *.tsbuildinfo",
+    "clean:modules": "rm -rf ./node_modules ./package-lock.json",
+    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
+    "create": "npm run build && npm run test",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix",
+    "local": "npm run build && npm i --force && npx voyenv --help",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "start:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
+    "start:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv instrument",
+    "test": "jest --passWithNoTests",
+    "test:dev": "jest --watch"
+  },
+  "dependencies": {
+    "@dxworks/cli-common": "^0.0.7",
+    "@dxworks/ktextensions": "^0.1.0",
+    "cli-progress": "^3.9.1",
+    "commander": "^8.2.0",
+    "isomorphic-git": "^1.10.1",
+    "octokit": "^1.6.2",
+    "string-template": "^1.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

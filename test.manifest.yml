@@ -1,4 +1,4 @@
-slug: project
+id: project
 name: Project Name
 
 description: Project is amazing
@@ -7,6 +7,8 @@ license: Apache-2.0
 
 code:
   - https://github.com/dxworks/project
+
+logo:
 
 docs:
 

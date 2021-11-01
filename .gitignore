@@ -122,3 +122,5 @@ dist
 *.pem
 voyager-test
 voyenv.yml
+/manifest.schema.json
+.DS_Store
