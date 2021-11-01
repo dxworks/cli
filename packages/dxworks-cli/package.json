@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A cli utility for developing and using dxworks projects",
   "keywords": [
     "cli",
@@ -47,8 +47,8 @@
     "test:dev": "jest --watch"
   },
   "dependencies": {
-    "@dxworks/dev": "^0.0.3",
-    "@dxworks/voyenv": "^0.0.3",
+    "@dxworks/dev": "^0.0.4",
+    "@dxworks/voyenv": "^0.0.4",
     "commander": "^8.2.0"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/dev",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A cli utility to help users develop dxworks projects",
   "keywords": [
     "cli",
@@ -42,7 +42,7 @@
     "test:dev": "jest --watch"
   },
   "dependencies": {
-    "@dxworks/cli-common": "^0.0.3",
+    "@dxworks/cli-common": "^0.0.4",
     "@dxworks/ktextensions": "^0.1.0",
     "commander": "^8.2.0",
     "didyoumean": "^1.2.2",
