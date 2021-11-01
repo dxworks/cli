@@ -28,7 +28,7 @@
     "build": "npm run clean && tsc -p tsconfig.build.json && npm run copy-files",
     "clean": "rimraf dist/ *.tsbuildinfo",
     "clean:modules": "rm -rf ./node_modules ./package-lock.json",
-    "copy-files": "copyfiles -a -u 1 assets/**/*.* dist/assets",
+    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist/assets",
     "create": "npm run build && npm run test",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
@@ -43,6 +43,7 @@
     "@dxworks/cli-common": "^0.0.4",
     "@dxworks/ktextensions": "^0.1.0",
     "commander": "^8.2.0",
+    "cli-progress": "^3.9.1",
     "isomorphic-git": "^1.10.1",
     "octokit": "^1.6.2",
     "string-template": "^1.0.0"

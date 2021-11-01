@@ -1,7 +1,7 @@
 import {SingleBar} from 'cli-progress'
 import fs from 'fs'
-import request from 'request'
 import {Octokit} from 'octokit'
+import axios from 'axios'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars,@typescript-eslint/explicit-module-boundary-types
 export const noop = () => {
@@ -26,30 +26,36 @@ export async function downloadFile(url: string, filename: string, payload?: any,
   const file = fs.createWriteStream(filename, 'utf-8')
   let receivedBytes = 0
 
+  const {data, headers, status} = await axios.get(url,
+    {
+      method: 'GET',
+      responseType: 'stream',
+    })
+
+  const totalBytes = headers['content-length'] ? +headers['content-length'] : 0
+
   return new Promise((resolve, reject) => {
-    request.get(url)
-      .on('response', (response) => {
-        if (response.statusCode !== 200) {
-          return reject('Response status was ' + response.statusCode)
-        }
-        const totalBytes = response.headers['content-length'] ? +response.headers['content-length'] : 0
-        progressBar?.start(totalBytes, 0, payload)
-      })
-      .on('data', (chunk) => {
-        receivedBytes += chunk.length
-        progressBar?.update(receivedBytes, payload)
-      })
-      .pipe(file)
-      .on('finish', () => {
-        file.close()
-        resolve(filename)
-      })
-      .on('error', (err) => {
-        fs.unlinkSync(filename)
-        progressBar?.stop()
-        return reject(err)
-      })
-  })
+      if (status !== 200) {
+        return reject('Response status was ' + status)
+      }
+      progressBar?.start(totalBytes, 0, payload)
+      data
+        .on('data', (chunk: any) => {
+          receivedBytes += chunk.length
+          progressBar?.update(receivedBytes, payload)
+        })
+        .pipe(file)
+        .on('finish', () => {
+          file.close()
+          resolve(filename)
+        })
+        .on('error', (err: any) => {
+          fs.unlinkSync(filename)
+          progressBar?.stop()
+          return reject(err)
+        })
+    }
+  )
 }
 
 /**

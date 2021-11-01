@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@dxworks/ktextensions": "^0.1.0",
+    "axios": "^0.24.0",
     "chalk": "^4.1.2",
     "cli-progress": "^3.9.1",
     "octokit": "^1.6.2",
