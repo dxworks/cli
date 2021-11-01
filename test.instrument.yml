@@ -39,6 +39,8 @@ actions:
     #        parameters:
     #          param1:
     #        environment:
+        with:
+          validExitCodes: [0, 24]
     parameters:
     environment:
 

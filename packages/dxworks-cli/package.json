@@ -6,14 +6,21 @@
     "cli",
     "dxworks"
   ],
-  "author": "Mario Rivis <mario.rivis@gmail.com>",
   "homepage": "https://github.com/dxworks/cli#readme",
+  "bugs": {
+    "url": "https://github.com/dxworks/cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxworks/cli.git"
+  },
   "license": "Apache-2.0",
+  "author": "Mario Rivis <mario.rivis@gmail.com>",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "bin": {
     "dxw": "./dist/index.js"
   },
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -21,29 +28,23 @@
   "files": [
     "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dxworks/cli.git"
-  },
   "scripts": {
-    "clean": "rimraf dist/ *.tsbuildinfo",
-    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
-    "start:voyenv:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts voyenv install",
-    "start:voyenv:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts voyenv instrument",
-    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts dev validate test.manifest.yml",
-    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts dev validate --fix test.manifest.yml",
-    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/index.js dev validate --fix test.manifest.yml",
-    "create": "npm run build && npm run test",
     "build": "npm run clean && tsc -p . && npm run copy-files",
-    "local": "npm run build && npm i --force && npx dxw --help",
-    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "clean": "rimraf dist/ *.tsbuildinfo",
+    "clean:modules": "rm -rf ./node_modules ./package-lock.json",
+    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
+    "create": "npm run build && npm run test",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
+    "local": "npm run build && npm i --force && npx dxw --help",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/index.js dev validate --fix test.manifest.yml",
+    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts dev validate test.manifest.yml",
+    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts dev validate --fix test.manifest.yml",
+    "start:voyenv:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts voyenv install",
+    "start:voyenv:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts voyenv instrument",
     "test": "jest --passWithNoTests",
     "test:dev": "jest --watch"
-  },
-  "bugs": {
-    "url": "https://github.com/dxworks/cli/issues"
   },
   "dependencies": {
     "@dxworks/dev": "^0.0.3",

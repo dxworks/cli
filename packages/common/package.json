@@ -2,51 +2,44 @@
   "name": "@dxworks/cli-common",
   "version": "0.0.3",
   "description": "Common utils for dxworks-cli",
-  "author": "Mario Rivis <mario.rivis@gmail.com>",
   "homepage": "https://github.com/dxworks/cli#readme",
-  "license": "Apache-2.0",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "directories": {
-    "test": "__tests__"
+  "bugs": {
+    "url": "https://github.com/dxworks/cli/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dxworks/cli.git"
   },
+  "license": "Apache-2.0",
+  "author": "Mario Rivis <mario.rivis@gmail.com>",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "clean": "rimraf dist/ *.tsbuildinfo",
-    "create": "npm run build && npm run test",
     "build": "npm run clean && tsc -p tsconfig.build.json",
-    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "clean": "rimraf dist/ *.tsbuildinfo",
+    "clean:modules": "rm -rf ./node_modules ./package-lock.json",
+    "create": "npm run build && npm run test",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
     "test": "jest --passWithNoTests",
     "test:dev": "jest --watch"
-  },
-  "bugs": {
-    "url": "https://github.com/dxworks/cli/issues"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "@dxworks/ktextensions": "^0.1.0",
     "chalk": "^4.1.2",
     "cli-progress": "^3.9.1",
-    "commander": "^8.2.0",
-    "figlet": "^1.5.2",
-    "inquirer": "^8.2.0",
-    "inquirer-search-list": "^1.2.6",
     "octokit": "^1.6.2",
-    "semver": "^7.3.5",
-    "slug": "^5.1.0",
-    "string-template": "^1.0.0",
     "unzipper": "^0.10.11",
-    "winston": "^3.3.3",
-    "yaml": "^1.10.2"
+    "winston": "^3.3.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

@@ -1,31 +1,32 @@
 {
   "name": "@dxworks/cli-parent",
   "version": "0.1.0",
+  "private": true,
   "description": "Parent package of the cli project",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "author": "Mario Rivis",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna run build",
     "clean": "lerna run clean",
     "copy-files": "lerna run copy-files",
-    "start:voyenv:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
-    "start:voyenv:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv instrument",
-    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate test.manifest.yml",
-    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate --fix test.manifest.yml",
-    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/app/index.js dev validate --fix test.manifest.yml",
     "create": "lerna run create",
-    "build": "lerna run build",
-    "local": "lerna run local",
-    "refresh": "lerna run refresh",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
+    "local": "lerna run local",
+    "publish": "lerna run publish",
+    "refresh": "lerna run clean:modules && lerna bootstrap",
+    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/app/index.js dev validate --fix test.manifest.yml",
+    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate test.manifest.yml",
+    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate --fix test.manifest.yml",
+    "start:voyenv:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv install",
+    "start:voyenv:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts voyenv instrument",
     "test": "lerna run test",
-    "test:dev": "lerna run test:dev",
-    "publish": "lerna run publish"
+    "test:dev": "lerna run test:dev"
   },
-  "keywords": [],
-  "author": "Mario Rivis",
-  "license": "Apache-2.0",
   "devDependencies": {
     "@types/cli-progress": "^3.9.2",
     "@types/didyoumean": "^1.2.0",
@@ -49,13 +50,12 @@
     "lerna": "^4.0.0",
     "nodemon": "^2.0.13",
     "rimraf": "^3.0.2",
+    "sort-package-json": "^1.52.0",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   },
-  "dependencies": {},
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
-  },
-  "private": true
+  }
 }

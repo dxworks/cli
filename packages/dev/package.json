@@ -7,45 +7,55 @@
     "dev",
     "dxworks"
   ],
-  "author": "Mario Rivis <mario.rivis@gmail.com>",
   "homepage": "https://github.com/dxworks/cli#readme",
-  "license": "Apache-2.0",
-  "bin": {
-    "dxdev": "dist/index.js"
+  "bugs": {
+    "url": "https://github.com/dxworks/cli/issues"
   },
-  "main": "dist/dev.js",
-  "typings": "dist/dev.d.ts",
-  "files": [
-    "dist"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dxworks/cli.git"
   },
+  "license": "Apache-2.0",
+  "author": "Mario Rivis <mario.rivis@gmail.com>",
+  "main": "dist/dev.js",
+  "typings": "dist/dev.d.ts",
+  "bin": {
+    "dxdev": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "clean": "rimraf dist/ *.tsbuildinfo",
-    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
-    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate test.manifest.yml",
-    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate --fix test.manifest.yml",
-    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/app/index.js dev validate --fix test.manifest.yml",
-    "create": "npm run build && npm run test",
     "build": "npm run clean && tsc -p tsconfig.build.json && npm run copy-files",
-    "local": "npm run build && npm i --force",
-    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "clean": "rimraf dist/ *.tsbuildinfo",
+    "clean:modules": "rm -rf ./node_modules ./package-lock.json",
+    "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
+    "create": "npm run build && npm run test",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
+    "local": "npm run build && npm i --force",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/app/index.js dev validate --fix test.manifest.yml",
+    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate test.manifest.yml",
+    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts dev validate --fix test.manifest.yml",
     "test": "jest --passWithNoTests",
     "test:dev": "jest --watch"
   },
-  "bugs": {
-    "url": "https://github.com/dxworks/cli/issues"
-  },
   "dependencies": {
     "@dxworks/cli-common": "^0.0.3",
+    "@dxworks/ktextensions": "^0.1.0",
+    "commander": "^8.2.0",
+    "didyoumean": "^1.2.2",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "inquirer-search-list": "^1.2.6",
+    "isomorphic-git": "^1.10.1",
+    "octokit": "^1.6.2",
+    "semver": "^7.3.5",
+    "slug": "^5.1.0",
     "spdx-correct": "^3.1.1",
     "spdx-license-ids": "^3.0.10",
-    "isomorphic-git": "^1.10.1",
-    "didyoumean": "^1.2.2"
+    "yaml": "^1.10.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
