@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 
 import {Command} from 'commander'
-import {voyenvCommand} from '@dxworks/voyenv'
 import {_package} from './utils'
-import {devCommand} from '@dxworks/dev'
+import {initPlugins, pluginCommand} from './commands/plugin'
 
-
+initPlugins()
 
 const cli = new Command()
 cli
   .description(_package.description)
   .version(_package.version, '-v, -version, --version, -V')
-  .addCommand(voyenvCommand)
-  .addCommand(devCommand)
+  .addCommand(pluginCommand)
   .parse(process.argv)

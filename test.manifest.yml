@@ -32,3 +32,8 @@ voyager:
       tag: v1.1.2-voyager
       asset: dude-voyager.zi
 
+cli:
+  versions:
+    - name: @dxworks/plugin
+      version: 1.0.2
+      package: https://rawgithubusercontent/dxworks/plugin/package.json # can be deduced by searching for the package.json file in repositories using code entry above

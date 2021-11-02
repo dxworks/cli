@@ -29,7 +29,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run clean && tsc -p . && npm run copy-files",
+    "build": "npm run clean && tsc -p tsconfig.build.json && npm run copy-files",
     "clean": "rimraf dist/ *.tsbuildinfo",
     "clean:modules": "rm -rf ./node_modules ./package-lock.json",
     "copy-files": "copyfiles -a -u 1 src/assets/**/*.* dist",
@@ -38,18 +38,19 @@
     "lint:fix": "eslint ./src --ext .ts --fix",
     "local": "npm run build && npm i --force && npx dxw --help",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
-    "run:dev:validate-fix": "cross-env NODE_ENV=dev node dist/index.js dev validate --fix test.manifest.yml",
-    "start:dev:validate": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts dev validate test.manifest.yml",
-    "start:dev:validate-fix": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts dev validate --fix test.manifest.yml",
-    "start:voyenv:install": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts voyenv install",
-    "start:voyenv:instrument": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts voyenv instrument",
+    "start:plugin": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts plugin",
+    "start:plugin:list": "cross-env NODE_ENV=dev nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts plugin list",
     "test": "jest --passWithNoTests",
     "test:dev": "jest --watch"
   },
   "dependencies": {
-    "@dxworks/dev": "^0.0.7",
-    "@dxworks/voyenv": "^0.0.7",
-    "commander": "^8.2.0"
+    "@dxworks/cli-common": "^0.0.7",
+    "chalk": "^4.1.2",
+    "commander": "^8.2.0",
+    "npm": "^8.1.2"
+  },
+  "devDependencies": {
+    "@types/npm": "^7.19.0"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

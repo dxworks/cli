@@ -1,0 +1,12 @@
+{
+  "name": "@dxworks/plugins",
+  "version": "0.0.0",
+  "description": "Generated with DxWorks CLI",
+  "keywords": [],
+  "author": "dxw cli",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@dx-works/test-plugin": "^0.0.2"
+  },
+  "private": true
+}
