@@ -25,10 +25,11 @@ export function initPlugins(): void {
     log.info('Initializing plugins folder')
     fs.mkdirSync(pluginsFolder, {recursive: true})
     fs.cpSync(getAssetFile('plugins/package.json'), pluginsPackage)
-    fs.cpSync(getAssetFile('plugins/.npmrc'), path.resolve(pluginsFolder, '.npmrc'))
     log.info('Created package.json')
+    fs.cpSync(getAssetFile('plugins/npmrc'), path.resolve(pluginsFolder, '.npmrc'))
     log.info('Added .npmrc')
     log.info('Installing plugins')
     npm.install()
+    log.info('Done installing plugins')
   }
 }

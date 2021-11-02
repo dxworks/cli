@@ -32,7 +32,7 @@
     "build": "npm run clean && tsc -p tsconfig.build.json && npm run copy-files",
     "clean": "rimraf dist/ *.tsbuildinfo",
     "clean:modules": "rm -rf ./node_modules ./package-lock.json",
-    "copy-files": "copyfiles -a -u 1 src/assets/**/* src/assets/**/.* dist",
+    "copy-files": "copyfiles -a -u 1 src/assets/**/* dist",
     "create": "npm run build && npm run test",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
