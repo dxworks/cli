@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/cli-common",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Common utils for dxworks-cli",
   "homepage": "https://github.com/dxworks/cli#readme",
   "bugs": {
