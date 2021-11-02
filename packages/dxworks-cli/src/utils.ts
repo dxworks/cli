@@ -1,5 +1,6 @@
 import {homedir} from 'os'
 import path from 'path'
+import * as fs from 'fs'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 export const _package = require('../package.json')
@@ -19,4 +20,12 @@ export const ncuPath = getBin('ncu')
 
 function getBin(exe: string): string {
   return path.resolve(__dirname, '..', 'node_modules', '.bin', exe)
+}
+
+export function pluginPackageJson(module: string): any {
+  return JSON.parse(fs.readFileSync(path.resolve(pluginsFolder, 'node_modules', module, 'package.json')).toString())
+}
+
+export function getPluginFile(module: string, file: string): string {
+  return path.resolve(pluginsFolder, 'node_modules', module, file)
 }
