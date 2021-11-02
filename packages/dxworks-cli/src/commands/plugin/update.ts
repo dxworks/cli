@@ -6,7 +6,8 @@ import {ncuPath} from '../../utils'
 export const pluginUpdate = new Command()
   .name('update')
   .description('update dxworks cli plugins')
-  .argument('[plugins...]', 'npm module name for the plugin you want to install')
+  .aliases(['upgrade', 'up'])
+  .argument('[plugins...]', 'npm modules of the plugins you want to update')
   .option('-l --latest')
   .action(updatePlugins)
 

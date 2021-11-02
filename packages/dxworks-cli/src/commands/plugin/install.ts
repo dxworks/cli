@@ -3,6 +3,7 @@ import {npm} from '../../npm'
 
 export const pluginInstall = new Command()
   .name('install')
+  .aliases(['i', 'add'])
   .description('installs a dxworks cli plugin')
   .argument('<plugin>', 'npm module name for the plugin you want to install')
   .action(listPlugins)

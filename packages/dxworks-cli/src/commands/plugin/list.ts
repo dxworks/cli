@@ -7,6 +7,7 @@ import {npm} from '../../npm'
 
 export const pluginList = new Command()
   .name('list')
+  .alias('ls')
   .description('lists the installed packages')
   .option('-a --available', 'list all officially available dxworks cli plugins')
   .action(listPlugins)

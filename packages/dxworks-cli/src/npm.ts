@@ -9,6 +9,7 @@ export const npm = {
   npmCommand,
   update,
   outdated,
+  uninstall,
 }
 
 function list(options?: string, processOptions?: any): any {
@@ -36,6 +37,11 @@ function info(module: string, field = '', json = true): any {
 function install(module = '', otherOptions = '', directory = pluginsFolder): any {
   npmCommand(`install ${module} ${otherOptions}`, {cwd: directory, stdio: 'inherit'})
 }
+
+function uninstall(module: string, otherOptions = '', directory = pluginsFolder): any {
+  npmCommand(`uninstall ${module} ${otherOptions}`, {cwd: directory, stdio: 'inherit'})
+}
+
 
 function update(module = '', otherOptions = '', directory = pluginsFolder): any {
   npmCommand(`update ${module} ${otherOptions}`, {cwd: directory, stdio: 'inherit'})
