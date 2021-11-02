@@ -1,7 +1,7 @@
 import {Command} from 'commander'
 import {npm} from '../../npm'
 import {execSync} from 'child_process'
-import {ncuPath} from '../../utils'
+import {ncuPath, pluginsFolder} from '../../utils'
 
 export const pluginUpdate = new Command()
   .name('update')
@@ -14,7 +14,7 @@ export const pluginUpdate = new Command()
 async function updatePlugins(plugins: string[], options: any) {
   if (!plugins || plugins.length == 0) {
     if (options.latest) {
-      execSync(`${ncuPath} -u`)
+      execSync(`${ncuPath} -u`, {cwd:pluginsFolder, stdio:'inherit'})
       npm.install()
     } else {
       npm.update()
