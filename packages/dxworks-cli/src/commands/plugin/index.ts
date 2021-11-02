@@ -21,7 +21,7 @@ export const pluginCommand = new Command()
 export function initPlugins(): void {
   if (!fs.existsSync(pluginsPackage)) {
     log.info('Initializing plugins folder')
-    fs.mkdirSync(pluginsFolder)
+    fs.mkdirSync(pluginsFolder, {recursive: true})
     fs.cpSync(getAssetFile('plugins/package.json'), pluginsPackage)
     fs.cpSync(getAssetFile('plugins/.npmrc'), path.resolve(pluginsFolder, '.npmrc'))
     log.info('Created package.json')
