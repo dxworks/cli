@@ -45,9 +45,11 @@
   },
   "dependencies": {
     "@dxworks/cli-common": "^0.0.8",
+    "@dxworks/ktextensions": "^0.1.0",
     "chalk": "^4.1.2",
     "commander": "^8.2.0",
-    "npm": "^8.1.2"
+    "npm": "^8.1.2",
+    "npm-check-updates": "^11.8.5"
   },
   "devDependencies": {
     "@types/npm": "^7.19.0"

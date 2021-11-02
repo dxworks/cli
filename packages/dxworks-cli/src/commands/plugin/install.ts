@@ -1,5 +1,5 @@
 import {Command} from 'commander'
-import {install} from '../../npm'
+import {npm} from '../../npm'
 
 export const pluginInstall = new Command()
   .name('install')
@@ -8,5 +8,5 @@ export const pluginInstall = new Command()
   .action(listPlugins)
 
 async function listPlugins(plugin: string) {
-  install(plugin)
+  npm.install(plugin)
 }

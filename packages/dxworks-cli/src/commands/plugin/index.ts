@@ -4,14 +4,18 @@ import {getAssetFile, pluginsFolder, pluginsPackage} from '../../utils'
 import * as fs from 'fs'
 import {log} from '@dxworks/cli-common'
 import path from 'path'
-import * as npm from '../../npm'
 import {pluginInstall} from './install'
+import {pluginUpdate} from './update'
+import {npm} from '../../npm'
+import {pluginOutdated} from './outdated'
 
 export const pluginCommand = new Command()
   .name('plugin')
   .description('handles dxworks cli plugins')
   .addCommand(pluginList)
   .addCommand(pluginInstall)
+  .addCommand(pluginUpdate)
+  .addCommand(pluginOutdated)
 
 
 export function initPlugins(): void {

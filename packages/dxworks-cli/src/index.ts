@@ -3,6 +3,7 @@
 import {Command} from 'commander'
 import {_package} from './utils'
 import {initPlugins, pluginCommand} from './commands/plugin'
+import '@dxworks/ktextensions'
 
 initPlugins()
 

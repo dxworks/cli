@@ -14,4 +14,9 @@ export function getAssetFile(assetName: string): string {
   return path.join(__dirname, 'assets', assetName)
 }
 
-export const npmExePath = path.resolve(__dirname, '..', 'node_modules', '.bin', 'npm')
+export const npmExePath = getBin('npm')
+export const ncuPath = getBin('ncu')
+
+function getBin(exe: string): string {
+  return path.resolve(__dirname, '..', 'node_modules', '.bin', exe)
+}

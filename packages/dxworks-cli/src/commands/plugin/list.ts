@@ -3,7 +3,7 @@ import chalk from 'chalk'
 import {dxworksHubDir, log, updateDxworksHub} from '@dxworks/cli-common'
 import path from 'path'
 import * as fs from 'fs'
-import * as npm from '../../npm'
+import {npm} from '../../npm'
 
 export const pluginList = new Command()
   .name('list')
