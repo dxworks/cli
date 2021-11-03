@@ -5,6 +5,7 @@ import {_package, getPluginFile, pluginPackageJson, pluginsPackage} from './util
 import {initPlugins, pluginCommand} from './commands/plugin'
 import '@dxworks/ktextensions'
 import * as fs from 'fs'
+import {log} from '@dxworks/cli-common'
 
 initPlugins()
 
@@ -22,11 +23,15 @@ Object.keys(pluginsPackageJson.dependencies).forEach(plugin => {
     commands.map(c => {
       const filePath = getPluginFile(plugin, c.file)
       if (fs.existsSync(filePath)) {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const command: Command = require(filePath)[c.command]
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        cli.addCommand(command.description(`[from: ${plugin}] ${command._description}`))
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          const command: Command = require(filePath)[c.command]
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          cli.addCommand(command.description(`[from: ${plugin}] ${command._description}`))
+        }catch (e) {
+          log.error(`Could not load command ${commands} from plugin ${plugin}`)
+        }
       }
     })
   }

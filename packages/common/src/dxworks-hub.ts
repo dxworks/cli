@@ -17,7 +17,7 @@ export async function updateDxworksHub(): Promise<void> {
     })
     log.info('Successfully updated')
   } catch (e) {
-    log.warn('No repository found, cloning...', e)
+    log.warn('No repository found, cloning...')
     await git.clone({
       fs, http, dir: dxworksHubDir, url: dxworksHubGithubUrl,
     })
