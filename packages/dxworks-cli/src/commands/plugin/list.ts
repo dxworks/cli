@@ -4,6 +4,8 @@ import {dxworksHubDir, log, updateDxworksHub} from '@dxworks/cli-common'
 import path from 'path'
 import * as fs from 'fs'
 import {npm} from '../../npm'
+import {emoji} from 'node-emoji'
+import {SemVer} from 'semver'
 
 export const pluginList = new Command()
   .name('list')
@@ -13,31 +15,51 @@ export const pluginList = new Command()
   .action(listPlugins)
 
 async function listPlugins(options: any) {
+  const installedPlugins = npm.list().dependencies
+  const installedPluginNames = Object.keys(installedPlugins)
   if (!options.available) {
-    const installedPlugins = npm.list().dependencies
-
     if (!installedPlugins)
       log.info('No plugins are installed!')
     else {
       log.info('The following plugins are installed on your system:')
-      console.table(installedPlugins)
+
+      console.table(installedPlugins, ['version', 'resolved'])
     }
     log.info(`Run ${chalk.yellow('dxw plugin list -a')} for a list of all officially supported plugins.`)
+    log.info(`Run ${chalk.yellow('dxw plugin outdated')} for a list of all outdated installed plugins.`)
   } else {
     await updateDxworksHub()
     const pluginsFile = path.resolve(dxworksHubDir, 'cli-plugins.json')
     const cliPluginsJSON = JSON.parse(fs.readFileSync(pluginsFile).toString()) as CliPluginsJSON
     log.info('These are all officially supported dxw plugins:')
 
-    console.table(cliPluginsJSON.plugins.map(plugin => {
+    const tabularData = cliPluginsJSON.plugins.map(plugin => {
       const pluginInfo = npm.info(plugin)
+      const latestVersion = pluginInfo['dist-tags'].latest
+      const installedPluginVersion = installedPlugins[plugin]?.version
+      let _emoji = emoji.thumbsdown
+      try {
+        if (installedPluginVersion === latestVersion)
+          _emoji = emoji.tada
+        else {
+          const installedPluginSemver = new SemVer(installedPluginVersion)
+          const latestSemver = new SemVer(latestVersion)
+          if (installedPluginSemver.major === latestSemver.major)
+            _emoji = emoji.thumbsup
+        }
+      } catch (e) {
+        //ignore
+      }
+
       return {
         name: plugin,
         description: pluginInfo.description,
-        latest: pluginInfo['dist-tags'].latest,
-        install: `dxw plugin install ${plugin}`,
+        latest: latestVersion,
+        installed: installedPluginNames.includes(plugin) ? _emoji + ' ' + installedPlugins[plugin].version : `$ dxw plugin i ${plugin}`,
       }
-    }))
+    }).reduce((a: any, it) => ({...a, [it.name]: it}), {})
+    console.table(tabularData, ['description', 'latest', 'installed'])
+    log.info(`Run ${chalk.yellow('dxw plugin outdated')} for a list of all outdated installed plugins.`)
   }
 }
 
