@@ -16,7 +16,6 @@ export const pluginList = new Command()
 
 async function listPlugins(options: any) {
   const installedPlugins = npm.list().dependencies
-  const installedPluginNames = Object.keys(installedPlugins)
   if (!options.available) {
     if (!installedPlugins)
       log.info('No plugins are installed!')
@@ -29,11 +28,20 @@ async function listPlugins(options: any) {
     log.info(`Run ${chalk.yellow('dxw plugin outdated')} for a list of all outdated installed plugins.`)
   } else {
     await updateDxworksHub()
-    const pluginsFile = path.resolve(dxworksHubDir, 'cli-plugins.json')
-    const cliPluginsJSON = JSON.parse(fs.readFileSync(pluginsFile).toString()) as CliPluginsJSON
     log.info('These are all officially supported dxw plugins:')
+    const tabularData = getAllAvailablePlugins(installedPlugins)
+    console.table(tabularData, ['description', 'latest', 'installed'])
+    log.info(`Run ${chalk.yellow('dxw plugin outdated')} for a list of all outdated installed plugins.`)
+  }
+}
 
-    const tabularData = cliPluginsJSON.plugins.map(plugin => {
+export function getAllAvailablePlugins(installedPlugins = npm.list().dependencies) {
+  const pluginsFile = path.resolve(dxworksHubDir, 'cli-plugins.json')
+  const cliPluginsJSON = JSON.parse(fs.readFileSync(pluginsFile).toString()) as CliPluginsJSON
+  const installedPluginNames = Object.keys(installedPlugins)
+
+  return cliPluginsJSON.plugins.map(plugin => {
+    try {
       const pluginInfo = npm.info(plugin)
       const latestVersion = pluginInfo['dist-tags'].latest
       const installedPluginVersion = installedPlugins[plugin]?.version
@@ -57,10 +65,13 @@ async function listPlugins(options: any) {
         latest: latestVersion,
         installed: installedPluginNames.includes(plugin) ? _emoji + ' ' + installedPlugins[plugin].version : `$ dxw plugin i ${plugin}`,
       }
-    }).reduce((a: any, it) => ({...a, [it.name]: it}), {})
-    console.table(tabularData, ['description', 'latest', 'installed'])
-    log.info(`Run ${chalk.yellow('dxw plugin outdated')} for a list of all outdated installed plugins.`)
-  }
+    } catch (e) {
+      log.error(`Could not find plugin ${plugin}`)
+      return null
+    }
+  })
+    .filter(it => it !== null)
+    .reduce((a: any, it) => ({...a, [it!.name]: it}), {})
 }
 
 interface CliPluginsJSON {

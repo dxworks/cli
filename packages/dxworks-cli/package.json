@@ -50,11 +50,13 @@
     "commander": "^8.2.0",
     "node-emoji": "^1.11.0",
     "npm": "^8.1.2",
-    "npm-check-updates": "^11.8.5"
+    "npm-check-updates": "^11.8.5",
+    "omelette": "^0.4.17"
   },
   "devDependencies": {
     "@types/node-emoji": "^1.8.1",
-    "@types/npm": "^7.19.0"
+    "@types/npm": "^7.19.0",
+    "@types/omelette": "^0.4.1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

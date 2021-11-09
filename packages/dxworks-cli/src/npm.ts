@@ -10,6 +10,7 @@ export const npm = {
   update,
   outdated,
   uninstall,
+  link,
 }
 
 function list(options?: string, processOptions?: any): any {
@@ -29,7 +30,7 @@ function versionsFor(module: string): string[] {
 function info(module: string, field = '', json = true): any {
   const result = npmCommand(`info ${module} ${field} ${json ? '--json' : ''}`, {
     cwd: __dirname,
-    stdio: ['pipe', 'pipe', 'inherit'],
+    stdio: ['pipe', 'pipe', 'pipe'],
   })
   return JSON.parse(result.toString())
 }
@@ -53,6 +54,10 @@ function outdated(directory = pluginsFolder): any {
   } catch (e) {
     //ignore
   }
+}
+
+function link(module = '', otherOptions = '', directory = pluginsFolder): any {
+  npmCommand(`link ${module} ${otherOptions}`, {cwd: directory, stdio: 'inherit'})
 }
 
 function npmCommand(args: string, options?: any): string | Buffer {

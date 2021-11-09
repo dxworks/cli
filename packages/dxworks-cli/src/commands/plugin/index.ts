@@ -9,6 +9,7 @@ import {pluginUpdate} from './update'
 import {npm} from '../../npm'
 import {pluginOutdated} from './outdated'
 import {pluginUninstall} from './uninstall'
+import {pluginLink} from './link'
 
 export const pluginCommand = new Command()
   .name('plugin')
@@ -18,6 +19,7 @@ export const pluginCommand = new Command()
   .addCommand(pluginUpdate)
   .addCommand(pluginOutdated)
   .addCommand(pluginUninstall)
+  .addCommand(pluginLink)
 
 
 export function initPlugins(): void {

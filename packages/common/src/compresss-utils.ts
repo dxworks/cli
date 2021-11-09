@@ -9,7 +9,7 @@ export async function unzip(zipFileName: string, options?: { path: string, overw
         .pipe(unzipper.Parse())
         .on('entry', function (entry) {
           const fullPathName = path.resolve(options.path, entry.path.replaceBefore('/', options.overwriteRootDir))
-          if (entry.type == 'Directory') {
+          if (entry.type === 'Directory') {
             if (!fs.existsSync(fullPathName))
               fs.mkdirSync(fullPathName, {recursive: true})
           } else
