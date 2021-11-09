@@ -17,7 +17,6 @@ function getCommandCompletionTree(it: Command) {
 
 function createCommandBashCompletionTree(cli: Command) {
   const completionTree = cli.commands.reduce((a: any, it) => ({...a, [it.name()]: getCommandCompletionTree(it)}), {})
-  console.log(completionTree)
   fs.writeFileSync(path.resolve(dxwFolder, 'bash-completion.json'), JSON.stringify(completionTree))
 }
 

@@ -10,11 +10,11 @@ export const bashCompletionCommand = new Command()
   .name('complete')
   .description('installs autocomplete for the dxw command')
   .option('--completion')
+  .allowUnknownOption(true)
   .action(installBashCompletion)
 
 function installBashCompletion() {
   const tree = JSON.parse(fs.readFileSync(path.resolve(dxwFolder, 'bash-completion.json')).toString())
-  console.log(tree)
   const completion = omelette('dxw').tree(tree)
   completion.init()
   // completion.cleanupShellInitFile()
