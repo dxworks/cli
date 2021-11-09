@@ -50,8 +50,7 @@
     "commander": "^8.2.0",
     "node-emoji": "^1.11.0",
     "npm": "^8.1.2",
-    "npm-check-updates": "^11.8.5",
-    "omelette": "^0.4.17"
+    "npm-check-updates": "^11.8.5"
   },
   "devDependencies": {
     "@types/node-emoji": "^1.8.1",
