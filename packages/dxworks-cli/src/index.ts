@@ -6,6 +6,7 @@ import {initPlugins, pluginCommand} from './commands/plugin'
 import '@dxworks/ktextensions'
 import * as fs from 'fs'
 import {log} from '@dxworks/cli-common'
+import {hubCommand} from './commands/hub'
 
 initPlugins()
 
@@ -14,6 +15,7 @@ function initDxwCommand() {
     .description(_package.description)
     .version(_package.version, '-v, -version, --version, -V')
     .addCommand(pluginCommand)
+    .addCommand(hubCommand)
 
 
   const pluginsPackageJson = JSON.parse(fs.readFileSync(pluginsPackage).toString())
