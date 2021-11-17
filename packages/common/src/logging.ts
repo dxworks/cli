@@ -1,4 +1,6 @@
 import {createLogger, format, transports} from 'winston'
+import path from 'path'
+import {dxwFolder} from '@dxworks/cli/dist/utils'
 
 const {json, errors, timestamp, prettyPrint, colorize, combine, printf} = format
 
@@ -25,7 +27,7 @@ export const log = createLogger({
     }),
     new transports.File({
       filename: 'dxw.log',
-      dirname: 'logs',
+      dirname: path.resolve(dxwFolder, 'logs'),
       format: combine(
         json(),
         errors({stack: true}),
