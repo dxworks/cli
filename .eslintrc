@@ -1,25 +1,36 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-        "@typescript-eslint"
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "comma-dangle": [
+      "warn",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "never",
+        "functions": "never"
+      }
     ],
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
     ],
-    "rules": {
-        "comma-dangle": ["warn", {
-            "arrays": "always-multiline",
-            "objects": "always-multiline",
-            "imports": "always-multiline",
-            "exports": "never",
-            "functions": "never"
-        }],
-        "quotes": ["error", "single", { "avoidEscape": true }],
-        "semi": ["warn", "never"],
-        "@typescript-eslint/no-explicit-any": "off"
-    }
-
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }

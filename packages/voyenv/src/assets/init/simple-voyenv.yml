@@ -3,8 +3,8 @@ name: {voyagerName}
 voyager_version: {voyagerVersion}
 
 instruments:
-  - name: dxworks/voyager-git-log-instrument
-    asset: git-log.zip
+  - name: dxworks/inspector-git
+    asset: iglog.zip
 
 tokens:
 

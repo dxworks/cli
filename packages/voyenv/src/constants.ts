@@ -11,7 +11,7 @@ export const missionFile = 'mission.yml'
 export const latest = 'latest'
 
 export const INIT = {
-  voyagerVersionTemplate: 'voyagerVersion',
-  voyagerNameTemplate: 'voyagerName',
-  voyagerPlatformTemplate: 'platform',
+    voyagerVersionTemplate: 'voyagerVersion',
+    voyagerNameTemplate: 'voyagerName',
+    voyagerPlatformTemplate: 'platform',
 }

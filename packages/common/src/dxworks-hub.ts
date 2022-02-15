@@ -7,20 +7,27 @@ import {homedir} from 'os'
 
 export const dxworksHubGithubUrl = 'https://github.com/dxworks/dxworks-hub'
 
-export const dxworksHubDir = path.resolve(homedir(), '.dxw', 'hub')
+export const dxwFolder = path.resolve(homedir(), '.dxw')
+
+export const dxworksHubDir = path.resolve(dxwFolder, 'hub')
 
 export async function updateDxworksHub(): Promise<void> {
-  try {
-    log.info('Updating dxworks-hub...')
-    await git.pull({
-      fs, http, dir: dxworksHubDir, ref: 'main', singleBranch: true, author: {name: 'cli', email: 'cli@dxworks.org'},
-    })
-    log.info('Successfully updated')
-  } catch (e) {
-    log.warn('No repository found, cloning...')
-    await git.clone({
-      fs, http, dir: dxworksHubDir, url: dxworksHubGithubUrl,
-    })
-    log.info('Successfully cloned')
-  }
+    try {
+        log.info('Updating dxworks-hub...')
+        await git.pull({
+            fs,
+            http,
+            dir: dxworksHubDir,
+            ref: 'main',
+            singleBranch: true,
+            author: {name: 'cli', email: 'cli@dxworks.org'},
+        })
+        log.info('Successfully updated')
+    } catch (e) {
+        log.warn('No repository found, cloning...')
+        await git.clone({
+            fs, http, dir: dxworksHubDir, url: dxworksHubGithubUrl,
+        })
+        log.info('Successfully cloned')
+    }
 }

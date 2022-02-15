@@ -1,7 +1,9 @@
 # DxWorks CLI
+
 TBA
 
-## Build 
+## Build
+
 ```shell
 # To install dependencies and link projects
 lerna bootstrap
