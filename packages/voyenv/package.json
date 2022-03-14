@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/voyenv",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A cli utility to create voyager releases",
   "keywords": [
     "cli",
@@ -40,7 +40,7 @@
     "test:dev": "jest --watch"
   },
   "dependencies": {
-    "@dxworks/cli-common": "^0.0.22",
+    "@dxworks/cli-common": "^0.0.23",
     "@dxworks/ktextensions": "^0.1.0",
     "chalk": "^4.1.2",
     "cli-progress": "^3.9.1",
