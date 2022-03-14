@@ -46,7 +46,8 @@
     "cli-progress": "^3.9.1",
     "commander": "^8.2.0",
     "octokit": "^1.6.2",
-    "string-template": "^1.0.0"
+    "string-template": "^1.0.0",
+    "yaml": "^1.10.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
