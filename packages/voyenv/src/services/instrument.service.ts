@@ -49,10 +49,10 @@ export class InstrumentService {
                 name: instrument.name,
                 state: 'Downloading',
             }, singleBar)
-            singleBar.update({name: instrument.name, state: 'Unzipping'})
+            singleBar?.update({name: instrument.name, state: 'Unzipping'})
             await unzip(zipFileName, {path: path.resolve(this.instrumentsDir), overwriteRootDir: instrumentFolder})
             fs.rmSync(zipFileName)
-            singleBar.update({name: instrument.name, state: 'Done'})
+            singleBar?.update({name: instrument.name, state: 'Done'})
         }
     }
 

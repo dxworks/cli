@@ -31,7 +31,7 @@ export class VoyagerService {
         }, Presets.shades_classic)
 
         const voyagerArchive = await downloadFile(release.data.assets[0].browser_download_url, path.resolve(this.directory, voyagerAssetName), {action: 'Downloading'}, progressBar)
-        progressBar.update({action: 'Unzipping'})
+        progressBar?.update({action: 'Unzipping'})
         await unzip(voyagerArchive, {path: this.directory, overwriteRootDir: voyager})
         fs.rmSync(voyagerArchive)
         const voyagerDir = path.join(this.directory, voyager)
