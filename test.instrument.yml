@@ -36,11 +36,11 @@ actions:
         mac: java -jar ...
         linux: java -jar ...
         windows: java -jar ...
-    #        parameters:
-    #          param1:
-    #        environment:
+        #        parameters:
+        #          param1:
+        #        environment:
         with:
-          validExitCodes: [0, 24]
+          validExitCodes: [ 0, 24 ]
     parameters:
     environment:
 

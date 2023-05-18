@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/dev",
-  "version": "0.0.7",
+  "version": "0.0.27",
   "description": "A cli utility to help users develop dxworks projects",
   "keywords": [
     "cli",
@@ -42,8 +42,9 @@
     "test:dev": "jest --watch"
   },
   "dependencies": {
-    "@dxworks/cli-common": "^0.0.7",
+    "@dxworks/cli-common": "^0.0.27",
     "@dxworks/ktextensions": "^0.1.0",
+    "chalk": "^4.1.2",
     "commander": "^8.2.0",
     "didyoumean": "^1.2.2",
     "figlet": "^1.5.2",
@@ -59,5 +60,13 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "dxw": {
+    "commands": [
+      {
+        "file": "dist/dev.js",
+        "command": "devCommand"
+      }
+    ]
   }
 }

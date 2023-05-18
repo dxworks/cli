@@ -5,5 +5,5 @@ export const _package = require('../package.json')
 
 
 export function getAssetFile(assetName: string): string {
-  return path.join(__dirname, 'assets', assetName)
+    return path.join(__dirname, 'assets', assetName)
 }

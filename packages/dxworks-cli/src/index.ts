@@ -1,16 +1,50 @@
 #!/usr/bin/env node
 
 import {Command} from 'commander'
-import {voyenvCommand} from '@dxworks/voyenv'
-import {_package} from './utils'
-import {devCommand} from '@dxworks/dev'
+import {_package, getPluginFile, pluginPackageJson, pluginsPackage} from './utils'
+import {initPlugins, pluginCommand} from './commands/plugin'
+import '@dxworks/ktextensions'
+import * as fs from 'fs'
+import {log} from '@dxworks/cli-common'
+import {hubCommand} from './commands/hub'
+
+initPlugins()
+
+function initDxwCommand() {
+    const cli = new Command()
+        .description(_package.description)
+        .version(_package.version, '-v, -version, --version, -V')
+        .addCommand(pluginCommand)
+        .addCommand(hubCommand)
 
 
+    const pluginsPackageJson = JSON.parse(fs.readFileSync(pluginsPackage).toString())
+    Object.keys(pluginsPackageJson.dependencies).forEach(plugin => {
+        const pluginPackage = pluginPackageJson(plugin)
+        const commands: { command: string, file: string }[] = pluginPackage?.dxw?.commands
+        if (commands) {
+            commands.map(c => {
+                const filePath = getPluginFile(plugin, c.file)
+                if (fs.existsSync(filePath)) {
+                    try {
+                        // eslint-disable-next-line @typescript-eslint/no-var-requires
+                        const command: Command = require(filePath)[c.command]
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        cli.addCommand(command.description(`[from: ${plugin}] ${command._description}`))
+                    } catch (e) {
+                        log.error(`Could not load command ${commands} from plugin ${plugin}`)
+                    }
+                }
+            })
+        }
+    })
 
-const cli = new Command()
-cli
-  .description(_package.description)
-  .version(_package.version, '-v, -version, --version, -V')
-  .addCommand(voyenvCommand)
-  .addCommand(devCommand)
-  .parse(process.argv)
+    cli.commands.sort((a, b) => a.name().localeCompare(b.name()))
+    return cli
+}
+
+export const cli = initDxwCommand()
+
+cli.parse(process.argv)
+

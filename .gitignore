@@ -124,3 +124,13 @@ voyager-test
 voyenv.yml
 /manifest.schema.json
 .DS_Store
+
+**/src/**/*.js
+**/src/**/*.d.ts
+**/src/**/*.js.map
+
+**/__tests__/**/*.js
+**/__tests__/**/*.d.ts
+**/__tests__/**/*.js.map
+
+tst

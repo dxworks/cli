@@ -1,0 +1,13 @@
+{
+  "name": "@dxworks/plugins",
+  "version": "0.0.0",
+  "description": "Generated with DxWorks CLI",
+  "keywords": [],
+  "author": "dxw cli",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@dxworks/dev": "^0.0.22",
+    "@dxworks/voyenv": "^0.0.22"
+  },
+  "private": true
+}

@@ -3,8 +3,6 @@ name: {voyagerName}
 voyager_version: {voyagerVersion}
 
 instruments:
-  - name: dxworks/voyager-git-log-instrument
-    asset: git-log.zip
   - name: dxworks/inspector-git
     asset: iglog.zip
   - name: dxworks/insider
@@ -17,10 +15,8 @@ instruments:
     asset: honeydew.zip
   - name: dxworks/jafax
     asset: jafax.zip
-  - name: dxworks/maven-miner
-    asset: maven-miner-voyager.zip
-  - name: dxworks/npm-miner
-    asset: npm-miner-voyager.zip
+  - name: dxworks/depminer
+    asset: depminer.zip
 
 tokens:
 
