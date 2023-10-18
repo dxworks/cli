@@ -40,8 +40,5 @@
     "octokit": "^3.1.1",
     "unzipper": "^0.10.14",
     "winston": "^3.11.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   }
 }

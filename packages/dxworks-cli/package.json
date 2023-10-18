@@ -55,8 +55,5 @@
   },
   "devDependencies": {
     "@types/node-emoji": "^2.1.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   }
 }

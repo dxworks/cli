@@ -49,9 +49,6 @@
     "string-template": "^1.0.0",
     "yaml": "^2.3.3"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "dxw": {
     "commands": [
       {

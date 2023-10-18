@@ -56,9 +56,6 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "dependencies": {
     "@changesets/cli": "^2.26.2"
   }
