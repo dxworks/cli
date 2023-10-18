@@ -20,6 +20,7 @@
   "files": [
     "dist"
   ],
+  "type": "commonjs",
   "scripts": {
     "build": "npm run clean && tsc -p tsconfig.build.json",
     "clean": "rimraf dist/ *.tsbuildinfo",
@@ -33,12 +34,12 @@
   },
   "dependencies": {
     "@dxworks/ktextensions": "^0.0.1",
-    "axios": "^1.4.0",
+    "axios": "^1.5.1",
     "cli-progress": "^3.12.0",
-    "isomorphic-git": "^1.23.0",
-    "octokit": "^2.0.15",
+    "isomorphic-git": "^1.24.5",
+    "octokit": "^3.1.1",
     "unzipper": "^0.10.14",
-    "winston": "^3.8.2"
+    "winston": "^3.11.0"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

@@ -44,7 +44,7 @@
   "dependencies": {
     "@dxworks/cli-common": "^0.0.27",
     "@dxworks/ktextensions": "^0.0.1",
-    "chalk": "^5.2.0",
+    "chalk": "^4.1.2",
     "commander": "^10.0.1",
     "didyoumean": "^1.2.2",
     "figlet": "^1.6.0",

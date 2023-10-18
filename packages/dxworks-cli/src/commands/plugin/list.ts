@@ -4,7 +4,7 @@ import {dxworksHubDir, log, updateDxworksHub} from '@dxworks/cli-common'
 import path from 'path'
 import * as fs from 'fs'
 import {npm} from '../../npm'
-import {emoji} from 'node-emoji'
+import {emojify} from 'node-emoji'
 import {SemVer} from 'semver'
 
 export const pluginList = new Command()
@@ -45,15 +45,15 @@ export function getAllAvailablePlugins(installedPlugins = npm.list().dependencie
             const pluginInfo = npm.info(plugin)
             const latestVersion = pluginInfo['dist-tags'].latest
             const installedPluginVersion = installedPlugins[plugin]?.version
-            let _emoji = emoji.thumbsdown
+            let _emoji = emojify(':thumbsdown:')
             try {
                 if (installedPluginVersion === latestVersion)
-                    _emoji = emoji.tada
+                    _emoji = emojify(':tada:')
                 else {
                     const installedPluginSemver = new SemVer(installedPluginVersion)
                     const latestSemver = new SemVer(latestVersion)
                     if (installedPluginSemver.major === latestSemver.major)
-                        _emoji = emoji.thumbsup
+                        _emoji = emojify(':thumbsup:')
                 }
             } catch (e) {
                 //ignore
