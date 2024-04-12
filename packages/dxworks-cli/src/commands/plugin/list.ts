@@ -35,40 +35,43 @@ async function listPlugins(options: any) {
     }
 }
 
+export function getPluginInfo(plugin: string, installedPlugins: { [x: string]: { version: string } }, installedPluginNames: string[]) {
+    try {
+        const pluginInfo = npm.info(plugin)
+        const latestVersion = pluginInfo['dist-tags'].latest
+        const installedPluginVersion = installedPlugins? installedPlugins[plugin]?.version : ''
+        let _emoji = emojify(':thumbsdown:')
+        try {
+            if (installedPluginVersion === latestVersion)
+                _emoji = emojify(':tada:')
+            else {
+                const installedPluginSemver = new SemVer(installedPluginVersion)
+                const latestSemver = new SemVer(latestVersion)
+                if (installedPluginSemver.major === latestSemver.major)
+                    _emoji = emojify(':thumbsup:')
+            }
+        } catch (e) {
+            //ignore
+        }
+        return {
+            name: plugin,
+            description: pluginInfo.description,
+            latest: latestVersion,
+            installed: installedPluginNames.includes(plugin) ? _emoji + ' ' + installedPlugins[plugin].version : `$ dxw plugin i ${plugin}`,
+        }
+    } catch (e) {
+        log.error(`Could not find plugin ${plugin}`, e)
+        return null
+    }
+}
+
 export function getAllAvailablePlugins(installedPlugins = npm.list().dependencies): any {
     const pluginsFile = path.resolve(dxworksHubDir, 'cli-plugins.json')
     const cliPluginsJSON = JSON.parse(fs.readFileSync(pluginsFile).toString()) as CliPluginsJSON
-    const installedPluginNames = Object.keys(installedPlugins)
+    const installedPluginNames = installedPlugins? Object.keys(installedPlugins): []
 
     return cliPluginsJSON.plugins.map(plugin => {
-        try {
-            const pluginInfo = npm.info(plugin)
-            const latestVersion = pluginInfo['dist-tags'].latest
-            const installedPluginVersion = installedPlugins[plugin]?.version
-            let _emoji = emojify(':thumbsdown:')
-            try {
-                if (installedPluginVersion === latestVersion)
-                    _emoji = emojify(':tada:')
-                else {
-                    const installedPluginSemver = new SemVer(installedPluginVersion)
-                    const latestSemver = new SemVer(latestVersion)
-                    if (installedPluginSemver.major === latestSemver.major)
-                        _emoji = emojify(':thumbsup:')
-                }
-            } catch (e) {
-                //ignore
-            }
-
-            return {
-                name: plugin,
-                description: pluginInfo.description,
-                latest: latestVersion,
-                installed: installedPluginNames.includes(plugin) ? _emoji + ' ' + installedPlugins[plugin].version : `$ dxw plugin i ${plugin}`,
-            }
-        } catch (e) {
-            log.error(`Could not find plugin ${plugin}`)
-            return null
-        }
+        return getPluginInfo(plugin, installedPlugins, installedPluginNames)
     })
         .filter(it => it !== null)
         .reduce((a: any, it) => ({...a, [it!.name]: it}), {})

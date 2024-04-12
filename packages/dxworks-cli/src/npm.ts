@@ -15,7 +15,7 @@ export const npm = {
 
 function list(options?: string, processOptions?: any): any {
     if (!options)
-        options = '--depth=0 --prod --json'
+        options = '--depth=0 --omit=dev --json'
 
     if (processOptions)
         return JSON.parse(npmCommand(`ls ${options}`, processOptions).toString())
