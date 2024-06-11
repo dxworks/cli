@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/cli",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A cli utility for developing and using dxworks projects",
   "keywords": [
     "cli",
