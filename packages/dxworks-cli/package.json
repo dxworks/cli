@@ -51,7 +51,7 @@
     "commander": "^11.1.0",
     "node-emoji": "^2.1.0",
     "npm": "^9.6.7",
-    "npm-check-updates": "^14.1.1"
+    "npm-check-updates": "^16.14.20"
   },
   "devDependencies": {
     "@types/node-emoji": "^2.1.0"
