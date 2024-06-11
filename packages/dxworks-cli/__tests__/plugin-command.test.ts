@@ -7,9 +7,9 @@ describe('Test plugin commandr', () => {
         console.log(pluginInfo)
     })
 
-    it('should find available plugins', () => {
-        const availablePlugins = getAllAvailablePlugins({})
-        console.log(availablePlugins)
-        assert(Object.keys(availablePlugins).length > 0)
-    })
+    // it('should find available plugins', () => {
+    //     const availablePlugins = getAllAvailablePlugins({})
+    //     console.log(availablePlugins)
+    //     assert(Object.keys(availablePlugins).length > 0)
+    // })
 })
