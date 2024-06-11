@@ -1,6 +1,6 @@
 {
   "name": "@dxworks/voyenv",
-  "version": "0.0.27",
+  "version": "0.2.1",
   "description": "A cli utility to create voyager releases",
   "keywords": [
     "cli",
@@ -40,17 +40,14 @@
     "test:dev": "jest --watch"
   },
   "dependencies": {
-    "@dxworks/cli-common": "^0.0.27",
-    "@dxworks/ktextensions": "^0.1.0",
+    "@dxworks/cli-common": "^0.2.1",
+    "@dxworks/ktextensions": "^0.0.1",
     "chalk": "^4.1.2",
-    "cli-progress": "^3.9.1",
-    "commander": "^8.2.0",
-    "octokit": "^1.6.2",
+    "cli-progress": "^3.12.0",
+    "commander": "^11.1.0",
+    "octokit": "^3.1.1",
     "string-template": "^1.0.0",
-    "yaml": "^1.10.2"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "yaml": "^2.3.3"
   },
   "dxw": {
     "commands": [

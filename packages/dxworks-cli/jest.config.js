@@ -11,3 +11,5 @@ module.exports = {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
 }
+
+process.env.ENVIRONMENT = 'development'
