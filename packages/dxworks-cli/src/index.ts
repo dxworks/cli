@@ -40,7 +40,8 @@ function initDxwCommand() {
         }
     })
 
-    cli.commands.sort((a, b) => a.name().localeCompare(b.name()))
+
+     // cli.commands.slice().sort((a: Command, b: Command) => a.name().localeCompare(b.name()))
     return cli
 }
 

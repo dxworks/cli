@@ -18,6 +18,9 @@ export const npmExePath = getBin('npm')
 export const ncuPath = getBin('ncu')
 
 function getBin(exe: string): string {
+    if(process.env.DEPINDER_ENVIRONMENT === 'development') {
+        return path.resolve(__dirname, '..', '..', '..', 'node_modules', '.bin', exe)
+    }
     return path.resolve(__dirname, '..', 'node_modules', '.bin', exe)
 }
 
